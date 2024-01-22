@@ -21,8 +21,8 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-top_image = Image.open('static/banner_top.png')
-bottom_image = Image.open('static/banner_bottom.png')
+top_image = Image.open('static/7049.png')
+bottom_image = Image.open('static/103-1036487_laptop-png.png')
 main_image = Image.open('static/main_banner.png')
 
 st.image(main_image,use_column_width='always')
