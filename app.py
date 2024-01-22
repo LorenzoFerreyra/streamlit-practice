@@ -43,9 +43,10 @@ if choice == "Create Note ✅":
 	with col2:
 		task_status = st.selectbox("Status",["ToDo","Doing","Done"])
 		task_due_date = st.date_input("Due Date")
+		tags = st.text_input("Tags (comma-separated)")
 
 	if st.button("Add Note"):
-		add_data(task,task_status,task_due_date)
+		add_data(task,task_status,task_due_date,tags)
 		st.success("Added Note \"{}\" ✅".format(task))
 		st.balloons()
 
@@ -73,9 +74,10 @@ elif choice == "Update Note 👨‍💻":
 		with col2:
 			new_task_status = st.selectbox(task_status,["To Do","Doing","Done"])
 			new_task_due_date = st.date_input(task_due_date)
+            
 
 		if st.button("Update Note 👨‍💻"):
-			edit_task_data(new_task,new_task_status,new_task_due_date,task,task_status,task_due_date)
+			edit_task_data(new_task,new_task_status,new_task_due_date,task,task_status,task_due_date, new_tags)
 			st.success("Updated Note \"{}\" ✅".format(task,new_task))
 
 		with st.expander("View Updated Data 💫"):
