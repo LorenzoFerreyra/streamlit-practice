@@ -112,14 +112,11 @@ else:
 		st.dataframe(clean_df.style.applymap(color_df,subset=['Status']))
 
 	with st.expander("Note Status 📝"):
-		task_df = clean_df['Status'].value_counts().to_frame()
-		task_df = task_df.reset_index()
+		task_df = clean_df['Status'].value_counts().reset_index()
+		task_df.columns = ['Status', 'Count']  # Cambiar el nombre de las columnas
 		st.dataframe(task_df)
-
-		p1 = px.pie(task_df,names='index',values='Status', color='index',
-			color_discrete_map={'ToDo':'red',
-                                 'Done':'green',
-                                 'Doing':'orange'})
-		st.plotly_chart(p1,use_container_width=True)
+		p1 = px.pie(task_df, names='Status', values='Count', color='Status',
+                    color_discrete_map={'ToDo': 'red', 'Done': 'green', 'Doing': 'orange'})
+		st.plotly_chart(p1, use_container_width=True)
 
 st.markdown("<br><hr><center>Made for Ensolvers with ❤️ by <a href='mailto:ferreyralorenzo2@gmail.com?subject=Note Creation WebApp!&body=Please specify the issue you are facing with the app.'><strong>Lorenzo</strong></a></center><hr>", unsafe_allow_html=True)
