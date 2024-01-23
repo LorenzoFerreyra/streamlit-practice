@@ -119,7 +119,12 @@ else:
 		st.dataframe(clean_df.style.applymap(color_df,subset=['Status']))
 
 	with st.expander("Note Status 📝"):
-		task_df = clean_df['Status'].value_counts().reset_index()
+		tags_for_filter = [i[0] for i in view_all_tags()]
+		all_tags_df = pd.DataFrame(tags_for_filter, columns=["Tags"])
+		st.write("All Tags:")
+		selected_tags = st.multiselect("Select Tags", tags_for_filter, default=tags_for_filter)
+		filtered_df = clean_df[clean_df['Tags'].apply(lambda x: any(tag in x for tag in selected_tags))]
+		task_df = filtered_df['Status'].value_counts().reset_index()
 		task_df.columns = ['Status', 'Count']
 		st.dataframe(task_df)
 		p1 = px.pie(task_df, names='Status', values='Count', color='Status',
