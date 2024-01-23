@@ -54,7 +54,7 @@ elif choice == "Update Note 👨‍💻":
 	st.subheader("Edit Items")
 	with st.expander("Current Data"):
 		result = view_all_data()
-		clean_df = pd.DataFrame(result,columns=["Note","Status","Date"])
+		clean_df = pd.DataFrame(result,columns=["Note","Status","Date", "Tags"])
 		st.dataframe(clean_df.style.applymap(color_df,subset=['Status']))
 
 	list_of_tasks = [i[0] for i in view_all_task_names()]
@@ -83,7 +83,7 @@ elif choice == "Update Note 👨‍💻":
 		with st.expander("View Updated Data 💫"):
 			result = view_all_data()
 			# st.write(result)
-			clean_df = pd.DataFrame(result,columns=["Note","Status","Date"])
+			clean_df = pd.DataFrame(result,columns=["Note","Status","Date", "Tags"])
 			st.dataframe(clean_df.style.applymap(color_df,subset=['Status']))
 
 elif choice == "Delete Note ❌":
@@ -91,7 +91,7 @@ elif choice == "Delete Note ❌":
 	with st.expander("View Data"):
 		result = view_all_data()
 		# st.write(result)
-		clean_df = pd.DataFrame(result,columns=["Note","Status","Date"])
+		clean_df = pd.DataFrame(result,columns=["Note","Status","Date","Tags"])
 		st.dataframe(clean_df.style.applymap(color_df,subset=['Status']))
 
 	unique_list = [i[0] for i in view_all_task_names()]
@@ -103,14 +103,14 @@ elif choice == "Delete Note ❌":
 	with st.expander("View Updated Data 💫"):
 		result = view_all_data()
 		# st.write(result)
-		clean_df = pd.DataFrame(result,columns=["Note","Status","Date"])
+		clean_df = pd.DataFrame(result,columns=["Note","Status","Date","Tags"])
 		st.dataframe(clean_df.style.applymap(color_df,subset=['Status']))
 
 else:
 	with st.expander("View All 📝"):
 		result = view_all_data()
 		# st.write(result)
-		clean_df = pd.DataFrame(result,columns=["Note","Status","Date"])
+		clean_df = pd.DataFrame(result,columns=["Note","Status","Date","Tags"])
 		st.dataframe(clean_df.style.applymap(color_df,subset=['Status']))
 
 	with st.expander("Note Status 📝"):
