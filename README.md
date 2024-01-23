@@ -36,7 +36,7 @@ Allows users to delete selected notes.
 Provides an overview of all notes, along with visual statistics on their status.
 
 ## Contact
-Made with ❤️ by [Your Name]. For any inquiries, you can contact me via [your@email.com].
+Made with ❤️ by Lorenzo. For any inquiries, you can contact me via [ferreyralorenzo2@gmail.com].
 
 <hr>
 
