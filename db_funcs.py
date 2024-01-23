@@ -19,6 +19,11 @@ def view_all_task_names():
     data = c.fetchall()
     return data
 
+def view_all_tags():
+    c.execute('SELECT DISTINCT tags FROM taskstable')
+    data = c.fetchall()
+    return data
+
 def get_task(task):
     c.execute('SELECT * FROM taskstable WHERE task="{}"'.format(task))
     data = c.fetchall()
@@ -26,6 +31,11 @@ def get_task(task):
 
 def get_task_by_status(task_status):
     c.execute('SELECT * FROM taskstable WHERE task_status="{}"'.format(task_status))
+    data = c.fetchall()
+    return data
+
+def get_tag_selected(tag):
+    c.execute('SELECT * FROM taskstable WHERE tags="{}"'.format(tag))
     data = c.fetchall()
     return data
 

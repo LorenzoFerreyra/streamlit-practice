@@ -58,6 +58,7 @@ elif choice == "Update Note 👨‍💻":
 		st.dataframe(clean_df.style.applymap(color_df,subset=['Status']))
 
 	list_of_tasks = [i[0] for i in view_all_task_names()]
+	list_of_tags = [i[0] for i in view_all_tags()]
 	selected_task = st.selectbox("Note",list_of_tasks)
 	task_result = get_task(selected_task)
 
@@ -66,14 +67,18 @@ elif choice == "Update Note 👨‍💻":
 		task_status = task_result[0][1]
 		task_due_date = task_result[0][2]
 
-		col1,col2 = st.columns(2)
+		col1,col2,col3 = st.columns(3)
 
 		with col1:
 			new_task = st.text_area("Note",task)
 
 		with col2:
-			new_task_status = st.selectbox(task_status,["To Do","Doing","Done"])
+			new_task_status = st.selectbox(task_status,["ToDo","Doing","Done"])
 			new_task_due_date = st.date_input(task_due_date)
+		with col3:
+			selected_task_index = list_of_tasks.index(selected_task)
+			selected_task_tags = task_result[selected_task_index][3]
+			new_tags = st.text_input("Edit Tags", selected_task_tags)
             
 
 		if st.button("Update Note 👨‍💻"):
@@ -115,7 +120,7 @@ else:
 
 	with st.expander("Note Status 📝"):
 		task_df = clean_df['Status'].value_counts().reset_index()
-		task_df.columns = ['Status', 'Count']  # Cambiar el nombre de las columnas
+		task_df.columns = ['Status', 'Count']
 		st.dataframe(task_df)
 		p1 = px.pie(task_df, names='Status', values='Count', color='Status',
                     color_discrete_map={'ToDo': 'red', 'Done': 'green', 'Doing': 'orange'})
