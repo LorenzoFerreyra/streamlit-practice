@@ -131,4 +131,4 @@ else:
                     color_discrete_map={'ToDo': 'red', 'Done': 'green', 'Doing': 'orange'})
 		st.plotly_chart(p1, use_container_width=True)
 
-st.markdown("<br><hr><center>Made for Ensolvers with ❤️ by <a href='mailto:ferreyralorenzo2@gmail.com?subject=Note Creation WebApp!&body=Please specify the issue you are facing with the app.'><strong>Lorenzo</strong></a></center><hr>", unsafe_allow_html=True)
+st.markdown("<br><hr><center>Made with ❤️ by <a href='mailto:ferreyralorenzo2@gmail.com?subject=Note Creation WebApp!&body=Please specify the issue you are facing with the app.'><strong>Lorenzo</strong></a></center><hr>", unsafe_allow_html=True)
